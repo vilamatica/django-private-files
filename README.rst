@@ -1,11 +1,7 @@
-.. django-private-files documentation master file, created by
-   sphinx-quickstart on Wed Mar 23 23:22:10 2011.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+=====================
+django-private-files
+=====================
 
-================================================
-django-private-files 0.1.1 documentation
-================================================
 
 This application provides utilities for controlling access to static files based on
 conditions you can specify within your Django application.
@@ -27,28 +23,4 @@ It's currently been tested with Django 1.3, Apache, Nginx and Lighttpd. It shoul
 django except for the example project. Cherokee uses the same mechanism as Apache mod_xsendfile and lighttpd, so
 it should work, but it's not been tested or documented.
 
-
-Contents:
-
-.. toctree::
-    :maxdepth: 2
-    
-    installation
-    usage
-    serverconf
-
-
-
-
-
-
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+The full documentation for the project can be found on `Read the Docs <http://django-private-files.rtfd.org/>`_ .

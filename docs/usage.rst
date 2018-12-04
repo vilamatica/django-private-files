@@ -26,7 +26,7 @@ need to pass your own callable to the ``condition`` parameter::
 
 		def is_owner(request, instance):
 		    return (not request.user.is_anonymous()) and request.user.is_authenticated and
-				   instance.owner.pk == request.user.pk
+				   instance.owner.pk = request.user.pk
 
 		class FileSubmission(models.Model):
 		    description = models.CharField("description", max_length = 200)
@@ -57,9 +57,42 @@ example of using the signal to provide a download counter::
         description = models.CharField("description", max_length = 200)
         downloadable = PrivateFileField("file", upload_to = 'downloadables')
         downloads = models.PositiveIntegerField("downloads total", default = 0)
-    
+
     def handle_pre_download(instance, field_name, request, **kwargs):
         instance.downloads += 1
         instance.save()
-    
+
     pre_download.connect(handle_pre_download, sender = CountedDownloads)
+
+
+Working with Amazon S3
+------------------------------------------
+
+For managing files in Amazon S3 it is needed install the following dependences::
+
+django-storages::
+
+    pip install django-storages
+
+You need configure folling django settings:
+
+* AWS_STORAGE_BUCKET_NAME: Your Amazon Web Services storage bucket name, as a string.
+
+* AWS_ACCESS_KEY_ID: Your Amazon Web Services access key, as a string.
+
+* AWS_SECRET_ACCESS_KEY: Your Amazon Web Services secret access key, as a string.
+
+
+More info at https://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html
+
+boto::
+
+    pip install boto
+
+You need configure folling django settings:
+
+* AWS_EXPIRES_IN: How long the url is valid for, in seconds. Default value = 60
+
+More into at http://docs.pythonboto.org/en/latest/
+
+

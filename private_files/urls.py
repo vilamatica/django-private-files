@@ -1,6 +1,6 @@
-from django.conf.urls import url
-from .views import get_file
+from django.conf.urls.defaults import *
 
-urlpatterns = (
-    url(r'^(.+)/(.+)/(.+)/(.+)/(.+)$', get_file, name='private_files-file'),
+urlpatterns = patterns('private_files.views',
+    url(r'^(.+)/(.+)/(.+)/(.+)/(.+)$', 'get_file', name = 'private_files-file'),
 )
+
